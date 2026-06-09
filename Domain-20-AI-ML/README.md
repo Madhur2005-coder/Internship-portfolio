@@ -21,4 +21,4 @@ This domain focuses on Machine Learning fundamentals, model building, evaluation
 
 ## Progress
 
-0/6 Tasks Completed
+6/6 Tasks Completed
