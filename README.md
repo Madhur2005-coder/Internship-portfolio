@@ -18,7 +18,7 @@ Welcome to my internship portfolio repository. This repository contains all task
 | VLSI                          | ⏳              |
 | IoT                           | ⏳              |
 | Ethical Hacking               | ⏳              |
-| AI / ML                       | 🚀 In Progress |
+| AI / ML                       | Done            |
 
 ## Featured Domain
 
