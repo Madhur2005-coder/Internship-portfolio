@@ -1,0 +1,41 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+
+data = pd.DataFrame({
+    "study_hours": [1, 2, 2.5, 3, 4, 4.5, 5, 6, 7, 8],
+    "attendance": [55, 62, 68, 72, 78, 82, 86, 90, 94, 98],
+    "sleep_hours": [5, 6, 6.5, 7, 7.5, 8, 7, 8, 7.5, 8],
+    "participation": [2, 3, 4, 5, 6, 7, 7, 8, 9, 10],
+    "assignments": [45, 55, 60, 70, 75, 82, 86, 90, 95, 98],
+    "exam_score": [48, 56, 61, 66, 73, 78, 82, 88, 93, 97],
+})
+
+features = ["study_hours", "attendance", "sleep_hours", "participation", "assignments"]
+X = data[features]
+y = data["exam_score"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+predictions = model.predict(X_test)
+
+print("Linear Regression Model")
+print("-" * 30)
+print(f"Intercept: {model.intercept_:.2f}")
+
+for feature, coefficient in zip(features, model.coef_):
+    print(f"{feature}: {coefficient:.2f}")
+
+print("\nSample Predictions")
+print("-" * 30)
+
+results = X_test.copy()
+results["actual_score"] = y_test.values
+results["predicted_score"] = predictions.round(2)
+print(results.to_string(index=False))

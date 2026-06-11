@@ -1,0 +1,17 @@
+from sklearn.metrics import mean_absolute_error
+
+
+actual_scores = [48, 56, 61, 66, 73, 78, 82, 88, 93, 97]
+predicted_scores = [50, 58, 60, 68, 71, 80, 85, 87, 91, 96]
+
+mae = mean_absolute_error(actual_scores, predicted_scores)
+
+print("Mean Absolute Error Evaluation")
+print("-" * 34)
+print(f"Actual scores:    {actual_scores}")
+print(f"Predicted scores: {predicted_scores}")
+print(f"MAE: {mae:.2f}")
+
+for actual, predicted in zip(actual_scores, predicted_scores):
+    error = abs(actual - predicted)
+    print(f"Actual: {actual:>3} | Predicted: {predicted:>3} | Absolute error: {error}")

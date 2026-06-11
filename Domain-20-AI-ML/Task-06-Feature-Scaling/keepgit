@@ -1,0 +1,36 @@
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+
+data = pd.DataFrame({
+    "study_hours": [1, 2, 3, 4, 5, 6, 7, 8],
+    "attendance": [52, 60, 68, 75, 82, 89, 94, 99],
+    "assignments": [45, 55, 63, 72, 81, 88, 94, 98],
+})
+
+standard_scaler = StandardScaler()
+minmax_scaler = MinMaxScaler()
+
+standard_scaled = pd.DataFrame(
+    standard_scaler.fit_transform(data),
+    columns=data.columns,
+)
+
+minmax_scaled = pd.DataFrame(
+    minmax_scaler.fit_transform(data),
+    columns=data.columns,
+)
+
+print("Original Data")
+print("-" * 20)
+print(data.to_string(index=False))
+
+print("\nStandard Scaled Data")
+print("-" * 20)
+print(standard_scaled.round(2).to_string(index=False))
+
+print("\nMin-Max Scaled Data")
+print("-" * 20)
+print(minmax_scaled.round(2).to_string(index=False))
+
